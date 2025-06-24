@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Audio FX</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h2>Live Monitoring z efektami</h2>
+<select id="effectSelect">
+    <option value="none">🔊 Bez efektu</option>
+    <option value="distortion">🔥 Distortion</option>
+    <option value="tremolo">🎶 Tremolo</option>
+</select>
+<br><br>
+<button onclick="startMonitoring(document.getElementById('effectSelect').value)">ON</button>
+<button onclick="stopMonitoring()">OFF</button>
+
+<select id="effectSelect" onchange="toggleDistortionControls()">
+
+<div id="distortion-controls" style="display:none;">
+    <h4>Ustawienia Distortion</h4>
+    <label for="gainRange">Gain: <span id="gainValue">400</span></label><br>
+    <input type="range" id="gainRange" min="0" max="1000" step="10" value="400"><br><br>
+
+    <label for="clipMode">Tryb clippingu:</label>
+    <select id="clipMode">
+        <option value="soft">Soft Clipping</option>
+        <option value="hard">Hard Clipping</option>
+    </select>
+</div>
+
+
+<p>Aktualne opóźnienie: <span id="latencyDisplay">–</span> ms</p>
+<p>Największe opóźnienie: <span id="maxLatencyDisplay">–</span> ms</p>
+
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
